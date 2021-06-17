@@ -1,0 +1,79 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+--------------------Funciones en R--------------------
+
+Una función en R comprende de la siguiente estructura.
+
+*Nombre:
+
+miFuncion <- function(){}
+
+*Argumentos:
+
+miFuncion <- function(Arg1, Arg2, ...){}
+
+*Cuerpo:
+
+miFuncion <- function(Arg1, Arg2, ...){
+
+  Desarrollo del Cuerpo con instrucciones
+  
+}
+
+*Resultado:
+
+miFuncion <- function(Arg1, Arg2, ...){
+
+  Desarrollo del Cuerpo con instrucciones
+
+  Resultado que retornará la función
+
+}
+
+Ejemplo de función
+```{r}
+MiPrimeraFuncion <- function(){
+  print("Mi primera función")
+}
+
+MiPrimeraFuncion()
+
+```
+
+
+Argumentos de una función
+```{r}
+FuncionArgumentos <- function(firstArgs, secondArgs){
+  firstResult <- paste("Primer parámetro ", firstArgs)
+  secondResult <- paste("Segundo parámetro ", secondArgs)
+  
+  print(firstResult)
+  print(secondResult)
+}
+
+FuncionArgumentos(firstArgs = 2, secondArgs = 5)
+```
+
+
+Argumentos por valor
+```{r}
+#Identificación de mayoria de edad
+ValidarMayoriaEdad <- function(edad){
+  if (is.numeric(edad)) {
+    if (edad < 18) {
+      print('Es menor de edad')
+    } else {
+      print('Es mayor de edad')
+    }
+  } else {
+    stop('El valor del parámetro edad debe de ser entero. Se ingreso: ' + edad)
+  }
+}
+
+ValidarMayoriaEdad(18)
+ValidarMayoriaEdad(15)
+ValidarMayoriaEdad(25)
+ValidarMayoriaEdad('Parámetro incorrecto')
+```
