@@ -1,0 +1,68 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+Familia Apply
+
+Uso de lapply con funciones (ejemplos)
+```{r}
+#Función
+GetRowOrColumn <- function(listFromMatrixs, isRow, number){
+  if (is.list(listFromMatrixs) & is.logical(isRow) & is.numeric(number)) {
+    if (isRow) {
+      lapply(listFromMatrixs, "[", number, )
+    } else {
+      lapply(listFromMatrixs, "[", , number)
+    }
+  }else{
+    print("Parametros incorrectos, por favor ingrese parametros validos.")
+  }
+}
+
+#Utilizando función
+coleccion1 <- c(1:9)
+coleccion2 <- c(9:1)
+coleccion3 <- c('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i')
+
+matriz1 <- matrix(coleccion1, nrow = 3, byrow = TRUE)
+matriz2 <- matrix(coleccion2, nrow = 3, byrow = FALSE)
+matriz3 <- matrix(coleccion3, nrow = 2, byrow = TRUE)
+
+listaMatrices = list(matriz1, matriz2, matriz3)
+
+GetRowOrColumn(listaMatrices, TRUE, 2)
+GetRowOrColumn(listaMatrices, FALSE, 3)
+
+```
+
+Uso de sapply con funciones (ejemplos)
+```{r}
+
+listaMatricesNumericas = list(matriz1, matriz2)
+
+RootToMatrices <- function(listFromMatrixs, exponente){
+  if (is.list(listFromMatrixs) & is.numeric(exponente)){
+    sapply(listFromMatrixs, function(i) i ^ exponente)
+  }else{
+    print("Parametros incorrectos, por favor ingrese parametros validos.")
+  }
+}
+
+listaMatricesNumericas
+RootToMatrices(listaMatricesNumericas, 2)
+
+```
+
+Uso de vapply con funciones (ejemplos)
+```{r}
+LengthMatrixs <- function(listFromMatrixs){
+  if (is.list(listFromMatrixs)){
+    vapply(listFromMatrixs, length, FUN.VALUE = 1)
+  }else{
+    print("Parametros incorrectos, por favor ingrese parametros validos.")
+  }
+}
+
+LengthMatrixs(listaMatrices)
+```
